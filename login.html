@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso Restringido</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f2f2f2;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+        }
+
+        input[type="password"], input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #ff66b2;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #ff3385;
+        }
+
+        #error-message {
+            color: red;
+            display: none;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .hint-button {
+            background-color: #f18d9e;
+            border: none;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .hint-button:hover {
+            background-color: #ff80b3;
+        }
+
+        .hint-container {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hint-container.visible {
+            display: block;
+            opacity: 1;
+        }
+
+        .hint-text {
+            font-size: 1.2rem;
+            color: #FF69B4;
+            margin-bottom: 15px;
+        }
+
+        .hint-image {
+            width: 150px;
+            height: auto;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hint-image.visible {
+            opacity: 1;
+        }
+
+        @media (max-width: 600px) {
+            .login-container {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Acceso Restringido</h2>
+        <input type="password" id="passwordInput" placeholder="Ingresar contraseña..." />
+        <label>
+            <input type="checkbox" id="togglePassword"> Mostrar contraseña oye
+        </label>
+        <button onclick="checkPassword()">Acceder</button>
+        <p id="error-message">Contraseña incorrecta muchacha. Inténtalo de nuevo.</p>
+        <button class="hint-button" onclick="showNextHint()">¿Necesitas una pista?</button>
+    </div>
+
+    <div id="hint1" class="hint-container">
+        <p class="hint-text">Pista 1: La primer parte de la clave fue lo primero que te regalé yo a ti.</p>
+        <img src="./pistas/lirio.gif" alt="Lirio" class="hint-image">
+    </div>
+
+    <div id="hint2" class="hint-container">
+        <p class="hint-text">Pista 2: La siguiente parte es uno de los colores que mencionaste que te gustan mucho.</p>
+        <img src="./pistas/lila.jpeg" alt="Color favorito" class="hint-image">
+    </div>
+
+    <div id="hint3" class="hint-container">
+        <p class="hint-text">Pista 3: La siguiente parte fue un regalo que me diste y que se da con la boquita (me gustan mucho).</p>
+        <img src="./pistas/muak.jpg" alt="Regalo" class="hint-image">
+        <audio src="./pistas/beso-100236.mp3" controls></audio>
+    </div>
+
+    <div id="hint4" class="hint-container">
+        <p class="hint-text">Pista 4: La siguiente parte es nuestro nombre combinado que nos pusimos no hace mucho.</p>
+        <img src="./pistas/Rasel.png" alt="Nombre combinado" class="hint-image">
+    </div>
+
+    <div id="hint5" class="hint-container">
+        <p class="hint-text">Pista 5: Y la última es una de tus frases bellas que haces cuando te sonrojas.</p>
+        <img src="./pistas/Ajuas.png" alt="Frase bella" class="hint-image">
+    </div>
+
+
+    <script>
+        const correctPassword = "(Lirios)(Lila)(Muak)(Rasel)(Ajuasajuasajuas)";
+        const errorMessage = document.getElementById('error-message');
+        const passwordInput = document.getElementById('passwordInput');
+        const togglePassword = document.getElementById('togglePassword');
+        const hintContainers = document.querySelectorAll('.hint-container');
+        const hintImages = document.querySelectorAll('.hint-image');
+        let currentHint = 0;
+
+        togglePassword.addEventListener('change', () => {
+            passwordInput.type = togglePassword.checked ? 'text' : 'password';
+        });
+
+        function checkPassword() {
+            if (passwordInput.value === correctPassword) {
+                window.location.href = "index.html";
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        function showNextHint() {
+            if (currentHint < hintContainers.length) {
+                hintContainers[currentHint].classList.add('visible');
+                hintImages[currentHint].classList.add('visible');
+                currentHint++;
+            } else {
+                alert("¡No hay más pistas disponibles muchachaa!");
+            }
+        }
+    </script>
+
+</body>
+</html>
