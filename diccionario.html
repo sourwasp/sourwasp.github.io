@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Palabras</title>
+    <style>
+        body {
+            font-family: "Parkinsans", sans-serif;
+            background-color: #F8B7D1;
+            margin: 0;
+            padding: 0;
+        }
+
+        button {
+            background-color: #f18d9e;
+            border: none;
+            padding: 10px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            color: white;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .diccionario {
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #eb9797;
+            border-radius: 10px;
+            box-shadow: 10px 10px 10px rgba(255, 255, 255, 0.89);
+            text-align: center;
+            color: white;
+            border: dotted 5px #fe5398;
+        }
+
+        .diccionario ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .diccionario li {
+            font-size: 20px;
+            color: #fafafa;
+            padding: 10px 0;
+        }
+
+        .diccionario li:last-child {
+            border-bottom: none;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+        }
+
+        p {
+            text-align: center;
+            color: whitesmoke;
+            margin-top: -30px;
+            font-size: 20px;
+        }
+
+        .return-button {
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #ff66b2;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .return-button:hover {
+            background-color: #ff3385;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <h1>Lista de Palabras</h1> <br>
+        <p>puedes buscar estas palabras muchacha</p>
+    </div>
+
+    <div class="diccionario">
+        <ul>
+            <li>Rachiluz</li>
+            <li>Inocenciafeliz</li>
+            <li>Niñezeterna</li>
+            <li>Provenero</li>
+            <li>Caderaloquita</li>
+            <li>AjuasjuasAjuas</li>
+            <li>Lunarcielito</li>
+            <li>Rapunzelencia</li>
+            <li>Pulseralma</li>
+            <li>Giravida</li>
+            <li>Pazachel</li>
+            <li>Abrazencia</li>
+            <li>Hablaespejo</li>
+            <li>Graciasentido</li>
+            <li>Inefabilidad</li>
+        </ul>
+        <button class="return-button" onclick="goBack()">Regresar</button>
+    </div>
+
+
+    <script>
+        function goBack() {
+            window.history.back(); // Regresa a la página anterior
+        }
+    </script>
+
+</body>
+</html>
